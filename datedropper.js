@@ -1992,9 +1992,10 @@
 
 					picker_modal = (input.data('modal')===true) ? 'picker-modal' : '',
 					picker_theme = input.data('theme') || 'primary',
-					picker_translate_mode = (input.data('translate-mode')===true) ? true : false;
+					picker_translate_mode = (input.data('translate-mode')===true) ? true : false,
+					picker_target = input.data('target') && $(input.data('target')).is(input.data('target')) ? input.data('target') : 'body';
 
-				if(picker_disabled_days) {
+        if(picker_disabled_days) {
 					$.each(picker_disabled_days, function( index, value ) {
 						if(value&&is_date(value))
 							picker_disabled_days[index] = get_unix(value);
@@ -2067,7 +2068,7 @@
 						class: 'picker'
 					})
 				})
-				.appendTo('body');
+				.appendTo(picker_target);
 
 				picker = {
 					id : id,
